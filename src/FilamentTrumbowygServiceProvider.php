@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Webuti\FilamentTrumbowyg;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,14 +13,14 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
+use Webuti\FilamentTrumbowyg\Commands\FilamentTrumbowygCommand;
+use Webuti\FilamentTrumbowyg\Testing\TestsFilamentTrumbowyg;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentTrumbowygServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-trumbowyg';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'filament-trumbowyg';
 
     public function configurePackage(Package $package): void
     {
@@ -36,7 +36,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->askToStarRepoOnGitHub('webuti/filament-trumbowyg');
             });
 
         $configFileName = $package->shortName();
@@ -82,18 +82,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
+                    $file->getRealPath() => base_path("stubs/filament-trumbowyg/{$file->getFilename()}"),
+                ], 'filament-trumbowyg-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsSkeleton());
+        Testable::mixin(new TestsFilamentTrumbowyg());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'webuti/filament-trumbowyg';
     }
 
     /**
@@ -102,11 +102,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            // AlpineComponent::make('filament-trumbowyg', __DIR__ . '/../resources/dist/components/filament-trumbowyg.js'),
+            Css::make('filament-trumbowyg-styles', __DIR__ . '/../resources/dist/filament-trumbowyg.css'),
+            Css::make('filament-trumbowyg-styles', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.26.0/ui/trumbowyg.min.css'),
+            Js::make('filament-trumbowyg-scripts', __DIR__ . '/../resources/dist/filament-trumbowyg.js'),
+            Js::make('jquery', 'https://code.jquery.com/jquery-3.6.1.min.js'),
+            Js::make('trumbowyg-core', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.26.0/trumbowyg.min.js'),
         ];
     }
+
+
+
+
 
     /**
      * @return array<class-string>
@@ -114,7 +121,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            FilamentTrumbowygCommand::class,
         ];
     }
 
@@ -148,7 +155,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_skeleton_table',
+            'create_filament-trumbowyg_table',
         ];
     }
 }

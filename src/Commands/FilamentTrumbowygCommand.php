@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Webuti\FilamentTrumbowyg\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentTrumbowygCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-trumbowyg';
 
     public $description = 'My command';
 
