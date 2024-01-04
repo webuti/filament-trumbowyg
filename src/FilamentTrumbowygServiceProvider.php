@@ -104,7 +104,7 @@ class FilamentTrumbowygServiceProvider extends PackageServiceProvider
         return [
             // AlpineComponent::make('filament-trumbowyg', __DIR__ . '/../resources/dist/components/filament-trumbowyg.js'),
             Css::make('filament-trumbowyg-styles', __DIR__ . '/../resources/dist/filament-trumbowyg.css'),
-            Css::make('filament-trumbowyg-styles', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.26.0/ui/trumbowyg.min.css'),
+            Css::make('trumbowyg-styles', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.26.0/ui/trumbowyg.min.css'),
             Js::make('filament-trumbowyg-scripts', __DIR__ . '/../resources/dist/filament-trumbowyg.js'),
             Js::make('jquery', 'https://code.jquery.com/jquery-3.6.1.min.js'),
             Js::make('trumbowyg-core', 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.26.0/trumbowyg.min.js'),
