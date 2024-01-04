@@ -111,10 +111,6 @@ class FilamentTrumbowygServiceProvider extends PackageServiceProvider
         ];
     }
 
-
-
-
-
     /**
      * @return array<class-string>
      */
